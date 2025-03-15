@@ -14,3 +14,5 @@ class User extends Model {
         'is_admin',
     ];
 }
+
+print_r(User);
