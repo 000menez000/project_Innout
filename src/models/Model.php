@@ -24,4 +24,35 @@ class Model {
     public function __set($key, $value) {
         $this->values[$key] = $value;
     }
+
+    public static function getSelect(array $filters = [], string $columns = "*") {
+        $sql = "SELECT ${columns} FROM " 
+            . static::$tableName
+            . static::getFilters($filters);
+
+        return $sql;
+    }
+
+    private static function getFilters(array $filters) {
+        $sql = '';
+
+        if(count($filters) > 0) {
+            $sql .= " WHERE 1 = 1";
+            foreach($filters as $column => $value) {
+                $sql.= " AND ${column} = " . static::getFormatedValue($value);
+            }
+        }
+
+        return $sql;
+    }
+
+    private static function getFormatedValue($value) {
+        if(is_null($value)) {
+            return "null";
+        } elseif (gettype($value) == 'string') {
+            return "'${value}'";
+        } else {
+            return $value;
+        }
+    }
 }
