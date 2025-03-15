@@ -31,7 +31,7 @@
                         autofocus 
                     >
     
-                    <label for="password">Senha</label>
+                    <label for="password" class="mt-3">Senha</label>
                     <input 
                         type="password" 
                         name="password" 

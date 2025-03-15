@@ -9,7 +9,7 @@ class Model {
         $this->loadFromArray($arr);
     }
 
-    public function loadFromArray($arr) {
+    public function loadFromArray(array $arr) {
         if($arr) {
             foreach($arr as $key => $value) {
                 $this->$key = $value;
@@ -24,8 +24,15 @@ class Model {
     public function __set($key, $value) {
         $this->values[$key] = $value;
     }
+    
+    public static function getOne(array $filters = [], string $columns = "*") {
+        $class = get_called_class();
+        $result = static::getResultSetFromSelect($filters, $columns);
+        
+        return $result? new $class($result->fetch_assoc()) : null;
+    }
 
-    public static function get(array $filters = [], $columns = "*") {
+    public static function get(array $filters = [], string $columns = "*") {
         $objects = [];
         $result = static::getResultSetFromSelect($filters, $columns);
         if($result) {
