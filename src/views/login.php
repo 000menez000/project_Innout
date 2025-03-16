@@ -20,6 +20,7 @@
                 <i class="icofont-runner-alt-1 ml-2"></i>
             </div>
             <div class="card-body">
+                <?php include(TEMPLATE_PATH . '/messages.php') ?>
                 <div class="form-group">
                     <label for="email">E-email</label>
                     <input 
@@ -27,10 +28,13 @@
                         name="email" 
                         id="email" 
                         placeholder="Digite seu E-mail"
-                        class="form-control"  
+                        class="form-control <?= $errors['email'] ? 'is-invalid' : '' ?>"   
                         value="<?= $email ?>"
                         autofocus 
                     >
+                    <div class="invalid-feedback">
+                        <?= $errors['email'] ?>
+                    </div>
     
                     <label for="password" class="mt-3">Senha</label>
                     <input 
@@ -38,8 +42,11 @@
                         name="password" 
                         id="password" 
                         placeholder="Digite sua senha"
-                        class="form-control"
+                        class="form-control <?= $errors['password'] ? 'is-invalid' : '' ?>"
                     >
+                    <div class="invalid-feedback">
+                        <?= $errors['password'] ?>
+                    </div>
                 </div>
             </div>
             <div class="card-footer">
