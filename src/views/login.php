@@ -28,6 +28,7 @@
                         id="email" 
                         placeholder="Digite seu E-mail"
                         class="form-control"  
+                        value="<?= $email ?>"
                         autofocus 
                     >
     
