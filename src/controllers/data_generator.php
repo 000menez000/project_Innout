@@ -49,7 +49,7 @@ function populateWorkingHours($userId, $initalDate, $regularRate, $extraRate, $l
             $template = getDayTemplateByOdds($regularRate, $extraRate, $lazyRate);
             $columns = array_merge($columns, $template);
             $workingHours = new WorkingHours($columns);
-            $workingHours->save();
+            $workingHours->insert();
         }
 
         $currentDate = getNextDay($currentDate)->format('Y-m-d');
@@ -63,3 +63,5 @@ populateWorkingHours(3, date('Y-m-d', $lastMonth), 20, 75, 5); // user 'Seu Barr
 populateWorkingHours(4, date('Y-m-d', $lastMonth), 20, 10, 70); // user 'Seu Madruga'
 
 echo 'tudo certo';
+
+ 
