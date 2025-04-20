@@ -78,6 +78,9 @@ class Model {
         foreach(static::$columns as $col) {
             $sql .= "${col}=" .static::getFormatedValue($this->$col) . ',';
         }
+        $sql[strlen($sql) - 1] = ' ';
+        $sql .= "WHERE id = {$this->id}";
+        Database::executeSQL($sql);
 
     }
 
