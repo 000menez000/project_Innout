@@ -5,6 +5,8 @@ function addSuccessMsg($msg) {
         'type' => 'success',
         'message' => $msg,
     ];
+
+    echo 'deu certo';
 }
 
 function addErrorMsg($msg) {
@@ -12,4 +14,6 @@ function addErrorMsg($msg) {
         'type' => 'error',
         'message' => $msg,
     ];
+
+    echo 'deu certo!';
 }

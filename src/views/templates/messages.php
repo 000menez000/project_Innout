@@ -1,7 +1,7 @@
 <?php
 $errors = [];
 
-if(!isset($_SESSION['message'])) {
+if(isset($_SESSION['message'])) {
     $message = $_SESSION['message'];
     unset($_SESSION['message']);
 } elseif($exception) {
@@ -11,11 +11,12 @@ if(!isset($_SESSION['message'])) {
     ];
 
     if(get_class($exception) === 'ValidationException') {
-        $errors = $exception->getErrors();
+        $errors = $exception->getErrssssssors();
     }
 }
 
 $alertType = '';
+
 if ($message) {
     switch($message['type']) {
         case 'error':
